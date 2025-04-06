@@ -1,28 +1,31 @@
-document.getElementById("submitBtn").addEventListener("click", function (e) {
-        e.preventDefault();
+function submitForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-        const form = document.getElementById("registerForm");
-        const formData = new FormData(form);
+    const userData = { name, email, password };
+    console.log("Yuborilayotgan ma'lumotlar:", userData);
 
-        fetch("http://localhost:8000/register", {
-            method: "POST",
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Serverdan javob:", data);
-            alert("Account yaratildi!");
-        })
-        .catch(error => {
-            console.error("Xatolik:", error);
-            alert("Xatolik yuz berdi.");
-        });
+    fetch('http://127.0.0.1:8000/user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Server xatosi: ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Serverdan kelgan javob:', data);
+        alert('Foydalanuvchi muvaffaqiyatli ro‘yxatdan o‘tdi!');
+        document.getElementById('registerForm').reset();
+    })
+    .catch(error => {
+        console.error('Xato:', error.message);
+        alert('Xatolik yuz berdi, qayta urinib ko‘ring.');
     });
-
-  const form = document.querySelector('form');
-  form.addEventListener('submit', function(event) {
-    if (!form.checkValidity()) {
-      event.preventDefault(); // Formani yuborishni to'xtatish
-      alert('Iltimos, barcha maydonlarni to\'ldiring!');
-    }
-  });
+}

@@ -16,30 +16,32 @@
     <div id="root">
         <div class="child1">
             <h1 class="greet">Hello, friend!</h1>
-
-            <form action="#">
-                <label for=""><i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Name"></label>
+        
+            <form id="registerForm" action="#">
+                <label for="name"><i class="fa-solid fa-user"></i>
+                    <input type="text" id="name" placeholder="Name" required></label>
                 <br>
-                <label for=""><i class="fa-solid fa-envelope-open"></i> <input type="email"
-                        placeholder="E-mail"></label>
-
+                <label for="email"><i class="fa-solid fa-envelope-open"></i>
+                    <input type="email" id="email" placeholder="E-mail" required></label>
                 <br>
-                <label for=""><i class="fa-solid fa-lock"></i><input type="password" placeholder="Password"></label>
-
-                <p style="padding-top: 15px ;"><i class="fa-regular fa-circle-check"></i> I've read and aggre to <a
-                        href="#">Terms & Conditions</a>
+                <label for="password"><i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required></label>
+                <br>
+                <p>
+                    <i class="fa-regular fa-circle-check"></i> I've read and agree to <a href="#">Terms & Conditions</a>
                 </p>
             </form>
-            <button>CREATE ACCOUNT</button>
+            <button onclick="submitForm()">CREATE ACCOUNT</button>
             <p>Already have an account? <a href="#">Sign in</a></p>
-
         </div>
         <div class="child2">
             <h1>Glad to see You!</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
         </div>
+        
     </div>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
