@@ -19,5 +19,5 @@ async def create_user(
         email : str, 
         password : str
 ):
-    return { ""}
+    return {"id" : id, "name" : name, "email" : email, }
 
